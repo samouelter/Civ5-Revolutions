@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created by robk on 10/7/2010. Edited by Gedemon for Revolution -->
+
+<Context Color0="Beige" Color1="Black,256" Font="TwCenMT16" FontStyle="Shadow" >
+
+	<!-- Blanks out the background -->
+	<Box Anchor="C,C" Size="Full,Full" Color="0,0,0,160" ConsumeMouse="1" ID="BackDrop"/>
+
+	<!-- The main box where all our stuff lives. All of this just sets the main frame and top panel text -->
+	<Grid Size="990,653" Anchor="C,C" Offset="0,42" Style="Grid9DetailFive140" ConsumeMouse="1">
+
+		<!-- Panel Header Text -->
+		<Label String="TXT_KEY_REVOLUTION_INFOS_TITLE" ID="TitleLabel" Anchor="C,T" Offset="0,19" Font="TwCenMT20" Color0="30.50.80.255" Color1="133.184.186.255" Color2="133.184.186.255" FontStyle="SoftShadow"  />
+
+		<!-- Left and right frames -->
+		<Image Anchor="L,C" AnchorSide="O.I"  Offset="-17,0" Texture="Dec32x64Left.dds" Size="32.64" />
+		<Image Anchor="R,C" AnchorSide="O.I"  Offset="-17,0" Texture="Dec32x64Right.dds" Size="32.64" />
+
+		<!-- Mmmm, fancy trim -->
+		<Image Anchor="C,T" AnchorSide="I.O" Size="256,64" Offset="0,-16"  Texture="assets\UI\Art\Icons\Top512IconTrim.dds" >
+			<Image ID="CivIconBG" Size="64.64" Anchor="C,C" Offset="-1,-1" TextureOffset="77,0" Texture="CivIconBGSizes.dds" />
+			<Image ID="CivIconShadow" Size="48.48" Anchor="C,C" Offset="0,0" Texture="CivSymbolAtlas48.dds" Color="Black.128"/>
+			<Image ID="Icon" Size="48,48" Offset="-1,-1"  Anchor="C,C" Texture="CivSymbolsColor512.dds" />
+		</Image>
+
+
+		<!-- The box at the bottom along with the close button -->
+		<Button Anchor="R,T" Size="32,32" Offset="26.6" TextureOffset="28,-2" Texture="CloseMinButtons.dds"  ToolTip="TXT_KEY_ESC_TO_EXIT" ID="CloseButton" Hidden="0"/>
+
+	</Grid>
+
+	<!--=======================================================================================================================-->
+	<!--=======================================================================================================================-->
+	
+	<!-- Main Container -->
+	<Box Offset="-32,70" Anchor="C,C" Size="900,623" Color="255.255.200.0" >
+
+
+		<!-- Column Headers -->
+		<Stack Anchor="L,T" StackGrowth="Right" Offset="0,0" Padding="0" >
+
+			<Box  Anchor="L,C" Color="White,0" Size="240,24"  >
+				<!--<Label Anchor="C,C"  String="TXT_KEY_REVOLUTION_SUMMARY" />-->
+			</Box>
+
+			<Button  ID="SortStability" Anchor="L,C" Size="48,24"  Style="BoxButton" ToolTip="TXT_KEY_SORT_CITY_STABILITY" >
+
+				<ShowOnMouseOver>
+					<AlphaAnim Anchor="C,C" Offset="0,0" Size="48,30" Pause="0" Cycle="Bounce" Speed="1" AlphaStart="2" AlphaEnd="1">
+						<Grid   Size="48,30"  Anchor="C,C" Offset="0,0" Padding="0,0" Style="Grid9FrameTurnsHL" />
+					</AlphaAnim>
+				</ShowOnMouseOver>
+
+				<Image Anchor="L,T" Offset="0,0" Texture="VerticalTrim.dds" Size="5.568" />
+				<Label Anchor="C,C"  Offset="0,-1" String="[ICON_TRADE_WHITE]"   />
+
+			</Button>
+
+			<Button ID="SortPopulation" Anchor="L,C" Size="48,24"  Style="BoxButton" ToolTip="TXT_KEY_EO_SORT_POPULATION" >
+				<ShowOnMouseOver>
+					<AlphaAnim Anchor="C,C" Offset="0,0" Size="68,30" Pause="0" Cycle="Bounce" Speed="1" AlphaStart="2" AlphaEnd="1">
+						<Grid   Size="68,30"  Anchor="C,C" Offset="0,0" Padding="0,0" Style="Grid9FrameTurnsHL" />
+					</AlphaAnim>
+				</ShowOnMouseOver>
+				<Label Anchor="C,C"  Offset="0,-1"  String="[ICON_CITIZEN]"   />
+			</Button>
+
+			<Button ID="SortCityName" Anchor="L,C" Size="240,24"  Style="BoxButton" ToolTip="TXT_KEY_EO_SORT_NAME" >
+				<ShowOnMouseOver>
+					<AlphaAnim Anchor="C,C" Offset="0,0" Size="260,30" Pause="0" Cycle="Bounce" Speed="1" AlphaStart="2" AlphaEnd="1">
+						<Grid   Size="260,30"  Anchor="C,C" Offset="0,0" Padding="0,0" Style="Grid9FrameTurnsHL" />
+					</AlphaAnim>
+				</ShowOnMouseOver>
+				<Label Anchor="C,C"  Offset="0.-1" Font="TwCenMT18" String="TXT_KEY_PRODPANEL_CITY_NAME"   />
+			</Button>
+
+			<Button ID="SortStrength" Anchor="L,C" Size="48,24"  Style="BoxButton" ToolTip="TXT_KEY_EO_SORT_STRENGTH" >
+				<ShowOnMouseOver>
+					<AlphaAnim Anchor="C,C" Offset="0,0" Size="68,30" Pause="0" Cycle="Bounce" Speed="1" AlphaStart="2" AlphaEnd="1">
+						<Grid   Size="68,30"  Anchor="C,C" Offset="0,0" Padding="0,0" Style="Grid9FrameTurnsHL" />
+					</AlphaAnim>
+				</ShowOnMouseOver>
+				<Label Anchor="C,C"  Offset="0,-1" String="[ICON_STRENGTH]"   />
+			</Button>
+
+
+
+			<Button ID="SortHappy" Anchor="L,C" Size="48,24"  Style="BoxButton" ToolTip="TXT_KEY_SORT_CITY_HAPPY" >
+				<ShowOnMouseOver>
+					<AlphaAnim Anchor="C,C" Offset="0,0" Size="68,30" Pause="0" Cycle="Bounce" Speed="1" AlphaStart="2" AlphaEnd="1">
+						<Grid   Size="68,30"  Anchor="C,C" Offset="0,0" Padding="0,0" Style="Grid9FrameTurnsHL" />
+					</AlphaAnim>
+				</ShowOnMouseOver>
+				<Image Anchor="L,T" Offset="-3,4" Texture="VerticalTrim.dds" Size="2.560" />
+				<Label Anchor="C,C"  Offset="0,-1" String="[ICON_HAPPINESS_1]"   />
+			</Button>
+
+
+			<Button ID="SortNeutral" Anchor="L,C" Size="48,24"  Style="BoxButton" ToolTip="TXT_KEY_SORT_CITY_NEUTRAL" >
+				<ShowOnMouseOver>
+					<AlphaAnim Anchor="C,C" Offset="0,0" Size="68,30" Pause="0" Cycle="Bounce" Speed="1" AlphaStart="2" AlphaEnd="1">
+						<Grid   Size="68,30"  Anchor="C,C" Offset="0,0" Padding="0,0" Style="Grid9FrameTurnsHL" />
+					</AlphaAnim>
+				</ShowOnMouseOver>
+				<Label Anchor="C,C"  Offset="0,-1" String="[ICON_HAPPINESS_3]"   />
+			</Button>
+
+			<Button ID="SortUnhappy" Anchor="L,C" Size="48,24"  Style="BoxButton" ToolTip="TXT_KEY_SORT_CITY_UNHAPPY" >
+				<ShowOnMouseOver>
+					<AlphaAnim Anchor="C,C" Offset="0,0" Size="68,30" Pause="0" Cycle="Bounce" Speed="1" AlphaStart="2" AlphaEnd="1">
+						<Grid   Size="68,30"  Anchor="C,C" Offset="0,0" Padding="0,0" Style="Grid9FrameTurnsHL" />
+					</AlphaAnim>
+				</ShowOnMouseOver>
+				<Label Anchor="C,C"  Offset="0,-1" String="[ICON_HAPPINESS_4]"   />
+			</Button>
+
+			<Button ID="SortRevolt" Anchor="L,C" Size="48,24"  Style="BoxButton" ToolTip="TXT_KEY_SORT_CITY_REVOLT" >
+				<ShowOnMouseOver>
+					<AlphaAnim Anchor="C,C" Offset="0,0" Size="68,30" Pause="0" Cycle="Bounce" Speed="1" AlphaStart="2" AlphaEnd="1">
+						<Grid   Size="68,30"  Anchor="C,C" Offset="0,0" Padding="0,0" Style="Grid9FrameTurnsHL" />
+					</AlphaAnim>
+				</ShowOnMouseOver>
+				<Image Anchor="L,T" Offset="-2,4" Texture="VerticalTrim.dds" Size="2.560" />
+				<Label Anchor="C,C"  Offset="0,-1" String="[ICON_RESISTANCE]"   />
+			</Button>
+
+			<Button ID="SortRebellion" Anchor="L,C" Size="48,24"  Style="BoxButton" ToolTip="TXT_KEY_SORT_CITY_REBELLION" >
+
+				<ShowOnMouseOver>
+					<AlphaAnim Anchor="C,C" Offset="0,0" Size="110,30" Pause="0" Cycle="Bounce" Speed="1" AlphaStart="2" AlphaEnd="1">
+						<Grid   Size="110,30"  Anchor="C,C" Offset="0,0" Padding="0,0" Style="Grid9FrameTurnsHL" />
+					</AlphaAnim>
+				</ShowOnMouseOver>
+				<Label Anchor="C,C"  Offset="0,-1" String="[ICON_RAZING]"   />
+			</Button>
+
+			<Button ID="SortRevolution" Anchor="L,C" Size="48,24"  Style="BoxButton" ToolTip="TXT_KEY_SORT_CITY_REVOLUTION" >
+				<ShowOnMouseOver>
+					<AlphaAnim Anchor="C,C" Offset="0,0" Size="68,30" Pause="0" Cycle="Bounce" Speed="1" AlphaStart="2" AlphaEnd="1">
+						<Grid   Size="68,30"  Anchor="C,C" Offset="0,0" Padding="0,0" Style="Grid9FrameTurnsHL" />
+					</AlphaAnim>
+				</ShowOnMouseOver>
+				<Label Anchor="C,C"  Offset="0,-1" String="[ICON_WAR]"   />
+			</Button>
+
+
+		</Stack>
+
+
+		<!-- General Information -->
+		<ScrollPanel Offset="0,0" Size="210,442" ID="RelationScroll" Vertical="1" >
+
+			<ScrollBar  Offset="8,0"  Style="VertSlider"      Anchor="R,C"   AnchorSide="o,i"    Length="434" />
+			<UpButton   Offset="8,2"  Style="ScrollBarUp"     Anchor="R,T"   AnchorSide="o,i"    />
+			<DownButton Offset="8,2"  Style="ScrollBarDown"   Anchor="R,B"   AnchorSide="o,i"    />
+
+			<Stack Growth="Bottom" Offset="0,0" ID="RelationStack" >
+				
+				<Box Size="175,45" Color="Beige,0" Anchor="C,C" >
+					<Grid Size="200,27" Style="Grid9FrameTurns" Anchor="C,B" />
+					<Label Offset="0,8" Font="TwCenMT20" Anchor="C,B" String="TXT_KEY_REVOLUTION_SUMMARY"  />
+				</Box>
+
+				<Box Size="215,24" Anchor="c,c" Color="0.0.0.0" ID="StabilityStatut" >
+					<Label Offset="10,0" Font="TwCenMT18" Anchor="L,C" ID="StabilityStatutStr" />
+				</Box>
+
+				<Box Size="215,24" Anchor="c,c" Color="0.0.0.0" ID="StabilityVariation" >
+					<Label Offset="10,0" Font="TwCenMT18" Anchor="L,C" ID="StabilityVariationStr" />
+				</Box>
+
+
+				<!--  Relation Faction / Empire  -->
+				<Box Size="175,45" Color="Beige,0" Anchor="C,C" >
+					<Grid Size="200,27" Style="Grid9FrameTurns" Anchor="C,B" />
+					<Label Offset="0,8" Font="TwCenMT20" Anchor="C,B" String="TXT_KEY_RELATION_FACTION_EMPIRE"  />
+				</Box>
+
+				<!-- Inner relations -->
+				<Button Size="215,24" Anchor="C,C"   TextAnchor="L,C" Font="TwCenMT18" TextOffset="5,0" ID="InnerRelationToggle" String="TXT_KEY_RELATION_INNER_EMPIRE_DETAILS" >
+					<Label Offset="10,0" Font="TwCenMT18" Anchor="R,C" ID="InnerRelationValue" />
+					<ShowOnMouseOver>
+						<AlphaAnim Anchor="C,C" Size="210,27" Pause="0" Cycle="Bounce" Speed="1" AlphaStart="2" AlphaEnd="1">
+							<Grid   Size="210,27" Offset="0,0" Padding="0,0" Style="Grid9FrameTurnsHL" />
+						</AlphaAnim>
+					</ShowOnMouseOver>
+				</Button>
+
+				<Stack Anchor="L,C" ID="InnerRelationStack" />
+
+
+				<!--  Inter faction  -->
+				<!--<Box Size="175,45" Color="Beige,0" Anchor="C,C" >
+					<Grid Size="200,27" Style="Grid9FrameTurns" Anchor="C,B" />
+					<Label Offset="0,8" Font="TwCenMT20" Anchor="C,B" String="TXT_KEY_RELATION_INTER_FACTION"  />
+				</Box>
+
+				
+				<Button Size="215,24" Anchor="C,C"   TextAnchor="L,C" Font="TwCenMT18" TextOffset="5,0" ID="BuildingsToggle" String="TXT_KEY_EMPTY" ToolTip="TXT_KEY_EMPTY" >
+					<Label Offset="10,0" Font="TwCenMT18" Anchor="R,C"  ID="BuildingExpenseValue"/>
+					<ShowOnMouseOver>
+						<AlphaAnim Anchor="C,C" Size="210,27" Pause="0" Cycle="Bounce" Speed="1" AlphaStart="2" AlphaEnd="1">
+							<Grid   Size="210,27" Offset="0,0" Padding="0,0" Style="Grid9FrameTurnsHL" />
+						</AlphaAnim>
+					</ShowOnMouseOver>
+				</Button>
+
+				<Stack Anchor="L,C" ID="BuildingsStack" /> -->
+
+
+
+			</Stack>
+		</ScrollPanel>
+
+
+		<ScrollPanel Anchor="L,T" Offset="245,28"  Size="718,440" Vertical="1" AutoScrollBar="1" ID="MainScroll" >
+
+			<ScrollBar  Offset="0,18"   Style="VertSlider"      Anchor="R,T" Length="402"      ID="ScrollBar"/>
+			<UpButton   Offset="0,0"    Style="ScrollBarUp"     Anchor="R,T"                   ID="UpButton"/>
+			<DownButton Offset="0,420"    Style="ScrollBarDown"   Anchor="R,T"                   ID="DownButton"/>
+
+
+			<Stack Anchor="L,T"  Size="784,440" StackGrowth="Bottom" Padding="0" ID="MainStack" >
+			</Stack>
+
+		</ScrollPanel>
+	</Box>
+
+
+	<!--=======================================================================================================================-->
+	<!--=======================================================================================================================-->
+	<Instance Name="InnerRelationEntry" >
+		<Box Size="210,24" Color="0.0.0.0" ID="InnerRelationChange">
+			<Label Offset="20,0" Font="TwCenMT16" Anchor="L,C" ID="InnerRelationGroupStr"  />
+			<Label Offset="6,0" Font="TwCenMT16" Anchor="R,C" ID="InnerRelationChangeValue" />
+		</Box>
+	</Instance>
+
+
+	<!--=======================================================================================================================-->
+	<!--=======================================================================================================================-->
+
+	<Instance Name="CityInstance" >
+
+		<Box ID="Root" Offset="0,0" Anchor="L,T" Size="690,34"  Color="255,255,255,0" >
+
+			<Button Size="690,34" Anchor="L,C" >
+				<ShowOnMouseOver>
+					<AlphaAnim Anchor="C,C" Size="690,37" Pause="0" Cycle="Bounce" Speed="1" AlphaStart="2" AlphaEnd="1">
+						<Grid   Size="690,37" Offset="0,0" Padding="0,0" Style="Grid9FrameTurnsHL" />
+					</AlphaAnim>
+				</ShowOnMouseOver>
+			</Button>
+
+			<Stack Anchor="L,C" StackGrowth="Right" Offset="0,0" Padding="0" >
+
+				<!-- Stability  -->
+				<Box Anchor="L,C" Color="255.255.255.0" Offset="0,0" Size="40,34" >
+					<Grid  Anchor="C,C"  Size="54,28" Offset="0,0" Padding="0,0" Style="Grid9Frame27" Hidden="1" />
+					<Label Anchor="C,C" Offset="0,0" String="00"  Color0="Beige.255" Color1="Black.255" Font="TwCenMT20" FontStyle="Stroke" ID="Stability" />
+				</Box>
+
+				<Box Anchor="C,C" Color="255.255.255.0" Offset="0,0" Size="48,34" >
+					<!-- GrowthMeter  -->
+					<Grid  Anchor="L,C"  Size="54,28" Offset="0,0" Padding="0,0" Style="Grid9Frame27" Hidden="1"/>
+					<Label Anchor="C,C" Offset="-6,0" String="14" Color0="Beige.255" Color1="Black.255"  Font="TwCenMT20" FontStyle="Stroke" ID="Population" />
+
+					<!-- GrowthMeter CityBannerGrowthBackground -->
+					<Box Anchor="R,C" Offset="4,0" Size="6,30" Color="0,0,0,255" Hidden="0" ID="GrowthBox">
+						<Bar Anchor="C,B" Offset="0,0" Size="4,30" FGColor="Food,128" Hidden="0" ID="GrowthBarShadow" Direction="Up" />
+						<Bar Anchor="C,B" Offset="0,0" Size="4,30" FGColor="Food,255" Hidden="0" ID="GrowthBar" Direction="Up" />
+
+						<Box Anchor="L,C" Offset="0,0" Size="3,30" Color="0,0,0,64" Hidden="0" />
+						<Box Anchor="R,C" Offset="1,0" Size="1,30" Color="255,255,0,64" Hidden="0" />
+
+						<Label Anchor="R,B" AnchorSide="O.I" Offset="1,2" Color0="Food,255" Color1="0,0,0,200" Font="TwCenMT14" FontStyle="Stroke" ID="CityGrowth" Hidden="0"/>
+
+					</Box>
+				</Box>
+
+				<Box Anchor="L,C" Offset="0,0" Color="Black.0" Size="242,34" >
+
+					<!-- HealthBar -->
+					<Box Anchor="C,B"  Offset="0,2" Size="140,5" Color="Black,256" Hidden="0" ID="HealthBarBox" >
+						<Bar Anchor="C,C" Offset="0,0" Size="138,3" Direction="Right" FGColor="Green,255" Hidden="0" ID="HealthBar" />
+					</Box>
+					<Label Anchor="C,C" Offset="0,-4" String="City Name"  ColorSet="Beige_Black_Alpha" Font="TwCenMT20" FontStyle="Shadow" ID="CityName" >
+						<Label Anchor="L,C" Offset="3,0" AnchorSide="O.I" String="[ICON_CAPITAL]"  ID="IconCapital" Hidden="0"/>
+					</Label>
+
+				</Box>
+
+				<Box Anchor="L,C" Color="255.255.255.0" Offset="0,0" Size="48,34" >
+					<Grid  Anchor="C,C"  Size="54,28" Offset="0,0" Padding="0,0" Style="Grid9Frame27" Hidden="1" />
+					<Label Anchor="C,C" Offset="0,0" String="00"  Color0="Beige.255" Color1="Black.255" Font="TwCenMT20" FontStyle="Stroke" ID="Defense" />
+				</Box>
+
+
+				<Box Anchor="L,C" Color="255.255.255.0" Offset="0,0" Size="48,34" >
+					<Grid  Anchor="C,C"  Size="54,28" Offset="0,0" Padding="0,0" Style="Grid9Frame27" Hidden="1" />
+					<Label  Anchor="C,C" Offset="0,0" String="000"  Color0="Beige.255" Color1="Black.255"  Font="TwCenMT20" FontStyle="Stroke" ID="Happy" />
+				</Box>
+
+
+				<Box Anchor="L,C" Color="255.255.255.0" Offset="0,0" Size="48,34" >
+					<Grid  Anchor="C,C"  Size="54,28" Offset="0,0" Padding="0,0" Style="Grid9Frame27" Hidden="1"/>
+					<Label  Anchor="C,C" Offset="0,0" String="+89"  Color0="Beige.255" Color1="Black.255"  Font="TwCenMT20" FontStyle="Stroke" ID="Neutral" />
+				</Box>
+
+
+				<Box Anchor="L,C" Color="255.255.255.0" Offset="0,0" Size="48,34" >
+					<Grid  Anchor="C,C"  Size="54,28" Offset="0,0" Padding="0,0" Style="Grid9Frame27" Hidden="1" />
+					<Label  Anchor="C,C" Offset="0,0" String="+2"  Color0="Beige.255" Color1="Black.255"  Font="TwCenMT20" FontStyle="Stroke" ID="Unhappy" />
+				</Box>
+
+				<Box Anchor="L,C" Color="255.255.255.0" Offset="0,0" Size="48,34" >
+					<Grid  Anchor="C,C"  Size="54,28" Offset="0,0" Padding="0,0" Style="Grid9Frame27" Hidden="1"/>
+					<Label  Anchor="C,C" Offset="0,0" String="+2"  Color0="Beige.255" Color1="Black.255"  Font="TwCenMT20" FontStyle="Stroke" ID="Revolt" />
+				</Box>
+
+				<Box Anchor="L,C" Color="255.255.255.0" Offset="0,0" Size="48,34" >
+					<Grid  Anchor="C,C"  Size="54,28" Offset="0,0" Padding="0,0" Style="Grid9Frame27" Hidden="1"/>
+					<Label  Anchor="C,C" Offset="0,0" String="+22"  Color0="Beige.255" Color1="Black.255"  Font="TwCenMT20" FontStyle="Stroke" ID="Rebellion" />
+				</Box>
+				
+				<Box Anchor="L,C" Color="255.255.255.0" Offset="0,0" Size="48,34" >
+					<Grid  Anchor="C,C"  Size="54,28" Offset="0,0" Padding="0,0" Style="Grid9Frame27" Hidden="1"/>
+					<Label  Anchor="C,C" Offset="0,0" String="+22"  Color0="Beige.255" Color1="Black.255"  Font="TwCenMT20" FontStyle="Stroke" ID="Revolution" />
+				</Box>
+
+
+			</Stack>
+
+			<Image Anchor="C,B" Offset="0,0" TextureOffset="110.0" Texture="bar900x2.dds" Size="680.1" />
+		</Box>
+
+	</Instance>
+
+
+</Context>

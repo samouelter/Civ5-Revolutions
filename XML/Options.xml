@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created by ModBuddy on 4/21/2012 1:23:56 AM -->
+<GameData>
+	<GameOptions>
+		<Row>
+			<Type>GAMEOPTION_REVOLUTION_SPAWN_NEW_CS</Type>
+			<Description>TXT_KEY_GAME_OPTION_REVOLUTION_SPAWN_NEW_CS</Description>
+			<Help>TXT_KEY_GAME_OPTION_REVOLUTION_SPAWN_NEW_CS_HELP</Help>
+			<Default>true</Default>
+		</Row>
+		<Row>
+			<Type>GAMEOPTION_REVOLUTION_RAGING_REBELS</Type>
+			<Description>TXT_KEY_GAME_OPTION_REVOLUTION_RAGING_REBELS</Description>
+			<Help>TXT_KEY_GAME_OPTION_REVOLUTION_RAGING_REBELS_HELP</Help>
+			<Default>true</Default>
+		</Row>
+	</GameOptions>
+	<Language_en_US>
+		<Row Tag="TXT_KEY_GAME_OPTION_REVOLUTION_SPAWN_NEW_CS">
+			<Text>Revolution: Can spawn new City-States</Text>
+		</Row>
+		<Row Tag="TXT_KEY_GAME_OPTION_REVOLUTION_SPAWN_NEW_CS_HELP">
+			<Text>After a Revolution, a city can be transformed into a new city-State if not under the influence of another Civilization.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_GAME_OPTION_REVOLUTION_RAGING_REBELS">
+			<Text>Revolution: Raging Rebels</Text>
+		</Row>
+		<Row Tag="TXT_KEY_GAME_OPTION_REVOLUTION_RAGING_REBELS_HELP">
+			<Text>The rate of Revolts (city resistance), Rebellions (rebels spawning) and Revolutions (city flipping) is greatly increased.</Text>
+		</Row>
+	</Language_en_US>
+</GameData>

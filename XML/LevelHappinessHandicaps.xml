@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameData>
+	<HandicapInfos>
+		<Update>
+			<Where Type="HANDICAP_WARLORD" />
+			<Set>
+				<HappinessDefault>12</HappinessDefault>
+				<NumCitiesUnhappinessMod>100</NumCitiesUnhappinessMod>
+				<PopulationUnhappinessMod>100</PopulationUnhappinessMod>
+			</Set>
+		</Update>
+		<Update>
+			<Where Type="HANDICAP_PRINCE" />
+			<Set>
+				<HappinessDefault>12</HappinessDefault>
+				<NumCitiesUnhappinessMod>100</NumCitiesUnhappinessMod>
+				<PopulationUnhappinessMod>100</PopulationUnhappinessMod>
+			</Set>
+		</Update>
+		<Update>
+			<Where Type="HANDICAP_KING" />
+			<Set>
+				<HappinessDefault>12</HappinessDefault>
+				<NumCitiesUnhappinessMod>100</NumCitiesUnhappinessMod>
+				<PopulationUnhappinessMod>100</PopulationUnhappinessMod>
+			</Set>
+		</Update>
+		<Update>
+			<Where Type="HANDICAP_EMPEROR" />
+			<Set>
+				<HappinessDefault>12</HappinessDefault>
+				<NumCitiesUnhappinessMod>100</NumCitiesUnhappinessMod>
+				<PopulationUnhappinessMod>100</PopulationUnhappinessMod>
+		</Set>
+		</Update>
+		<Update>
+			<Where Type="HANDICAP_IMMORTAL" />
+			<Set>
+				<HappinessDefault>12</HappinessDefault>
+				<NumCitiesUnhappinessMod>100</NumCitiesUnhappinessMod>
+				<PopulationUnhappinessMod>100</PopulationUnhappinessMod>
+			</Set>
+		</Update>
+		<Update>
+			<Where Type="HANDICAP_DEITY" />
+			<Set>
+				<HappinessDefault>12</HappinessDefault>
+				<NumCitiesUnhappinessMod>100</NumCitiesUnhappinessMod>
+				<PopulationUnhappinessMod>100</PopulationUnhappinessMod>
+			</Set>
+		</Update>
+	</HandicapInfos>
+	<PostDefines>
+		<Update>
+			<Where Name="AI_HANDICAP"/>
+			<Set Key="HANDICAP_PRINCE"/>
+		</Update>
+		<Update>
+			<Where Name="STANDARD_HANDICAP"/>
+			<Set Key="HANDICAP_PRINCE"/>
+		</Update>
+		<Update>
+			<Where Name="STANDARD_HANDICAP_QUICK"/>
+			<Set Key="HANDICAP_PRINCE"/>
+		</Update>
+		<Update>
+			<Where Name="BARBARIAN_HANDICAP"/>
+			<Set Key="HANDICAP_PRINCE"/>
+		</Update>
+	</PostDefines>
+</GameData>

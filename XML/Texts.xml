@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created by ModBuddy on 4/15/2012 5:24:22 PM -->
+<GameData>
+	<!-- English -->
+	<Language_en_US>
+
+		<!-- +++++++++++++++++++++++++++++++++ -->
+
+		<!-- Info screen -->
+		<Row Tag="TXT_KEY_REVOLUTION_INFOS_TITLE">
+			<Text>Empire Stability</Text>
+		</Row>
+		<Row Tag="TXT_KEY_REVOLUTION_SUMMARY">
+			<Text>Summary</Text>
+		</Row>
+		<Row Tag="TXT_KEY_RELATION_FACTION_EMPIRE">
+			<Text>Inner Relations</Text>
+		</Row>
+		<Row Tag="TXT_KEY_RELATION_INTER_FACTION">
+			<Text>Inter-Factions</Text>
+		</Row>
+		<Row Tag="TXT_KEY_SORT_CITY_STABILITY">
+			<Text>Sort by stability</Text>
+		</Row>
+		<Row Tag="TXT_KEY_SORT_CITY_HAPPY">
+			<Text>Sort by happy citizen</Text>
+		</Row>
+		<Row Tag="TXT_KEY_SORT_CITY_NEUTRAL">
+			<Text>Sort by neutral citizen</Text>
+		</Row>
+		<Row Tag="TXT_KEY_SORT_CITY_UNHAPPY">
+			<Text>Sort by unhappy citizen</Text>
+		</Row>
+		<Row Tag="TXT_KEY_SORT_CITY_REVOLT">
+			<Text>Sort by chance of strike</Text>
+		</Row>
+		<Row Tag="TXT_KEY_SORT_CITY_REBELLION">
+			<Text>Sort by chance of rebellion</Text>
+		</Row>
+		<Row Tag="TXT_KEY_SORT_CITY_REVOLUTION">
+			<Text>Sort by chance of revolution</Text>
+		</Row>
+		<Row Tag="TXT_KEY_RELATION_INNER_EMPIRE_DETAILS">
+			<Text>[ICON_PLUS] Global Stability</Text>
+		</Row>
+		<Row Tag="TXT_KEY_RELATION_INNER_EMPIRE_DETAILS_COLLAPSE">
+			<Text>[ICON_MINUS] Global Stability</Text>
+		</Row>
+		
+		<!--  -->
+		<Row Tag="TXT_KEY_RELATION_CHANGE_FROM_GLOBAL_HAPPINESS">
+			<Text> from global happiness.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_RELATION_CHANGE_FROM_SEPARATIST_BASE">
+			<Text>from separatists base relation.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_RELATION_CHANGE_FROM_OWN_BASE">
+			<Text>from own citizen base relation.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_RELATION_CHANGE_FROM_FOREIGN_BASE">
+			<Text>from foreign citizen base relation.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_RELATION_CHANGE_FROM_HAPPINESS_DIFFERENCE">
+			<Text>from happiness difference.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_RELATION_CHANGE_FROM_WAR">
+			<Text>from being at War.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_RELATION_CHANGE_FROM_DOF">
+			<Text>from having good international relation.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_RELATION_CHANGE_FROM_DENOUNCED">
+			<Text>from having bad international relation.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_RELATION_CHANGE_FROM_DEAD_CIV">
+			<Text>from global happiness. (defeated civilization)</Text>
+		</Row>
+		<Row Tag="TXT_KEY_RELATION_CHANGE_FROM_LIBERTY">
+			<Text>from Liberty Policy.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_RELATION_CHANGE_FROM_LIBERTY_FINISHER">
+			<Text>from completed Liberty Policy.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_RELATION_CHANGE_FROM_CITIZENSHIP">
+			<Text>from Citizenship Policy.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_RELATION_CHANGE_FROM_REPRESENTATION">
+			<Text>from Representation Policy.</Text>
+		</Row>
+
+	</Language_en_US>
+	<!-- German -->
+	<Language_DE_DE>
+	</Language_DE_DE>
+	<!-- Spanish -->
+	<Language_ES_ES>
+	</Language_ES_ES>
+	<!-- French -->
+	<Language_FR_FR>
+	</Language_FR_FR>
+	<!-- Italian -->
+	<Language_IT_IT>
+	</Language_IT_IT>
+</GameData>
