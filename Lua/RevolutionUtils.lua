@@ -324,7 +324,7 @@ function SetText ( str, tag )
 	-- that's the table used ingame :
 	local query = "UPDATE LocalizedText SET Text = '".. str .."' WHERE Tag = '".. tag .."'"
 	for result in DB.Query(query) do
-	end	
+	end
 	Dprint (query, bDebug)
 end
 
@@ -370,24 +370,24 @@ end
 
 function GetRelationValueString(value)
 	if value < THRESHOLD_EXASPERATED then
-		return "[COLOR_NEGATIVE_TEXT]exasperated[ENDCOLOR]"
+		return "[COLOR_NEGATIVE_TEXT]"..Locale.ConvertTextKey("TXT_KEY_REVOLUTION_RELATION_STATUS_EXASPERATED").."[ENDCOLOR]"
 	end
 	if value < THRESHOLD_WOEFUL then
-		return "[COLOR_NEGATIVE_TEXT]woeful[ENDCOLOR]"
+		return "[COLOR_NEGATIVE_TEXT]"..Locale.ConvertTextKey("TXT_KEY_REVOLUTION_RELATION_STATUS_WOEFUL").."[ENDCOLOR]"
 	end
 	if value < THRESHOLD_UNHAPPY then
-		return "unhappy"
+		return Locale.ConvertTextKey("TXT_KEY_REVOLUTION_RELATION_STATUS_UNHAPPY")
 	end
 	if value < THRESHOLD_CONTENT then
-		return "content"
+		return Locale.ConvertTextKey("TXT_KEY_REVOLUTION_RELATION_STATUS_CONTENT")
 	end
 	if value < THRESHOLD_HAPPY then
-		return "happy"
+		return Locale.ConvertTextKey("TXT_KEY_REVOLUTION_RELATION_STATUS_HAPPY")
 	end
 	if value < THRESHOLD_JOYFUL then
-		return "[COLOR_POSITIVE_TEXT]joyful[ENDCOLOR]"
+		return "[COLOR_POSITIVE_TEXT]"..Locale.ConvertTextKey("TXT_KEY_REVOLUTION_RELATION_STATUS_JOYFUL").."[ENDCOLOR]"
 	end
-	return "[COLOR_POSITIVE_TEXT]enthusiastic[ENDCOLOR]"
+	return "[COLOR_POSITIVE_TEXT]"..Locale.ConvertTextKey("TXT_KEY_REVOLUTION_RELATION_STATUS_ENTHUSIASTIC").."[ENDCOLOR]"
 end
 
 function GetCultureTypeAdj(cultureID)
@@ -406,23 +406,23 @@ function GetCultureTypeAdj(cultureID)
 	end
 
 	if cultureID == SEPARATIST_TYPE then
-		civAdj = "Separatist"
+		civAdj = Locale.ConvertTextKey ("TXT_KEY_REVOLUTION_CULTURE_TYPE_SEPARATIST_ADJ")
 	end
 	return civAdj
 end
 
 function GetTroubleValueString(value)
 	if value == 0 then
-		return "[COLOR_POSITIVE_TEXT]stable[ENDCOLOR]"
+		return "[COLOR_POSITIVE_TEXT]"..Locale.ConvertTextKey("TXT_KEY_REVOLUTION_TROUBLE_VALUE_STABLE").."[ENDCOLOR]"
 	end
 	if value == 1 then
-		return "protester"
+		return Locale.ConvertTextKey("TXT_KEY_REVOLUTION_TROUBLE_VALUE_PROTESTER")
 	end
 	if value == 2 then
-		return "[COLOR_NEGATIVE_TEXT]unstable[ENDCOLOR]"
+		return "[COLOR_NEGATIVE_TEXT]"..Locale.ConvertTextKey("TXT_KEY_REVOLUTION_TROUBLE_VALUE_UNSTABLE").."[ENDCOLOR]"
 	end
 	if value == 3 then
-		return "[COLOR_NEGATIVE_TEXT]rebellious[ENDCOLOR]"
+		return "[COLOR_NEGATIVE_TEXT]"..Locale.ConvertTextKey("TXT_KEY_REVOLUTION_TROUBLE_VALUE_REBELLIOUS").."[ENDCOLOR]"
 	end
 end
 
@@ -473,11 +473,11 @@ function HideMinorWarButton( popupInfo )
 
 	if Game.GetGameTurn() < WAR_MINIMUM_STARTING_TURN then
 		bForcedPeace = true
-		strToolTip = "You can't declare war before turn " .. WAR_MINIMUM_STARTING_TURN
+		strToolTip = Locale.ConvertTextKey("TXT_KEY_REVOLUTION_WAR_MINIMUM_STARTING_TURN") .. " " .. WAR_MINIMUM_STARTING_TURN
 	end
 	if not ALLOW_ALTERNATE_HISTORY then
 		bForcedPeace = true
-		strToolTip = "This scenario doesn't allow alternate history"
+		strToolTip = Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NO_ALTERNATE_HISTORY")
 	end
 
 	if g_MinorProtector then
@@ -489,8 +489,8 @@ function HideMinorWarButton( popupInfo )
 					Dprint ("Peace forced beetwen player and " .. protector:GetName(), bDebug)
 					
 					bForcedPeace = true
-					strToolTip = "There is a peace treaty enforced on you and this nation's protector"
-					strText = "We hope that the peace treaty between you and our protector will last."
+					strToolTip = Locale.ConvertTextKey("TXT_KEY_REVOLUTION_FORCED_PEACE_TOOLTIP")
+					strText = Locale.ConvertTextKey("TXT_KEY_REVOLUTION_FORCED_PEACE_MESSAGE")
 				end
 			end
 		end
@@ -534,10 +534,10 @@ function UpdateCityStateScreen( popupInfo )
 	if IsRebellingAgainst(minoriPlayer, iPlayer) then
 		Dprint ("War forced beetwen player and " .. Players[minoriPlayer]:GetName(), bDebug)
 		bForcedWar = true
-		strToolTip = "You can't make peace with rebels."
-		strText = "[ICON_RESISTANCE] Viva la Revolucion ! [ICON_RESISTANCE]"
+		strToolTip = Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NO_PEACE_WITH_REBELS")
+		strText = Locale.ConvertTextKey("TXT_KEY_REVOLUTION_MOTTO")
 		
-		strStatusText = "[COLOR_NEGATIVE_TEXT]Rebelling against your rule ![ENDCOLOR]"
+		strStatusText = Locale.ConvertTextKey("TXT_KEY_REVOLUTION_AGAINST_YOU")
 
 		strStatusTooltip = ""
 
@@ -549,10 +549,10 @@ function UpdateCityStateScreen( popupInfo )
 	elseif IsRebelling(minoriPlayer) then
 		Dprint ("Entering Rebel City-State Screen of " .. Players[minoriPlayer]:GetName(), bDebug)
 
-		strText = "[ICON_RESISTANCE] Viva la Revolucion ! [ICON_RESISTANCE]"
+		strText = Locale.ConvertTextKey("TXT_KEY_REVOLUTION_MOTTO")
 
 		local master = Players[GetMaster(minoriPlayer)]
-		strStatusText = "[COLOR_PLAYER_YELLOW_TEXT]Rebelling against ".. tostring(master:GetName()) .."[ENDCOLOR]"
+		strStatusText = "[COLOR_PLAYER_YELLOW_TEXT]"..Locale.ConvertTextKey("TXT_KEY_REVOLUTION_AGAINST_ANOTHER").." "..tostring(master:GetName()) .."[ENDCOLOR]"
 
 		strStatusTooltip = ""
 

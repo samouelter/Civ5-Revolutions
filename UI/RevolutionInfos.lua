@@ -212,43 +212,43 @@ function UpdateDisplay()
 			maxTrouble = stability
 		end
 
-		local unrestToolTipStr = "City maximum unrest value = "
+		local unrestToolTipStr = ""
 		if (from.Maximum > REVOLT_VALUE) or (from.Maximum > REBELLION_VALUE) or (from.Maximum > REVOLUTION_VALUE) then
-			unrestToolTipStr = unrestToolTipStr .. "[COLOR_NEGATIVE_TEXT]" .. from.Maximum .. "[ENDCOLOR] points."
+			unrestToolTipStr = unrestToolTipStr .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_UNREST_CITY_MAX", "COLOR_NEGATIVE_TEXT", from.Maximum)
 		elseif (from.Maximum > 0) then
-			unrestToolTipStr = unrestToolTipStr .. "[COLOR_PLAYER_ORANGE_TEXT]" .. from.Maximum .. "[ENDCOLOR] points."
+			unrestToolTipStr = unrestToolTipStr .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_UNREST_CITY_MAX", "COLOR_PLAYER_ORANGE_TEXT", from.Maximum)
 		else
-			unrestToolTipStr = unrestToolTipStr .. "[COLOR_POSITIVE_TEXT]" .. from.Maximum .. "[ENDCOLOR] points."
+			unrestToolTipStr = unrestToolTipStr .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_UNREST_CITY_MAX", "COLOR_POSITIVE_TEXT", from.Maximum)
 		end
 
 		if from.Random > 0 then
-			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE][COLOR_NEGATIVE_TEXT]+" .. from.Random .. "[ENDCOLOR] from initial unrest value."
+			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_UNREST_FROM_INITIAL", "COLOR_NEGATIVE_TEXT", from.Random)
 		elseif from.Random < 0 then
-			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE][COLOR_POSITIVE_TEXT]" .. from.Random .. "[ENDCOLOR] from initial unrest value."
+			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_UNREST_FROM_INITIAL", "COLOR_POSITIVE_TEXT", from.Random)
 		end
 
 		if from.MartialLaw > 0 then
-			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE][COLOR_NEGATIVE_TEXT]+" .. from.MartialLaw .. "[ENDCOLOR] from martial law by "..from.MilitaryUnits.." unit(s)."
+			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_UNREST_FROM_MARTIAL_LAW", "COLOR_NEGATIVE_TEXT", from.MartialLaw, from.MilitaryUnits)
 		elseif from.MartialLaw < 0 then
-			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE][COLOR_POSITIVE_TEXT]" .. from.MartialLaw .. "[ENDCOLOR] from martial law by "..from.MilitaryUnits.." unit(s)."
+			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_UNREST_FROM_MARTIAL_LAW", "COLOR_POSITIVE_TEXT", from.MartialLaw, from.MilitaryUnits)
 		end
 		
 		if from.Affinity > 0 then
-			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE][COLOR_NEGATIVE_TEXT]+" .. from.Affinity .. "[ENDCOLOR] from city affinity with your empire."
+			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_UNREST_FROM_AFFINITY", "COLOR_NEGATIVE_TEXT", from.Affinity)			
 		elseif from.Affinity < 0 then
-			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE][COLOR_POSITIVE_TEXT]" .. from.Affinity .. "[ENDCOLOR] from city affinity with your empire."
+			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_UNREST_FROM_AFFINITY", "COLOR_POSITIVE_TEXT", from.Affinity)			
 		end
 		
 		if from.IsPuppet > 100 then
-			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE][COLOR_NEGATIVE_TEXT]" .. from.IsPuppet .. "% ratio[ENDCOLOR] from autonomy statut. (puppet city)"
+			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_UNREST_FROM_AUTONOMY", "COLOR_NEGATIVE_TEXT", from.IsPuppet)	
 		elseif (from.IsPuppet < 100) and (from.IsPuppet > 0) then
-			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE][COLOR_POSITIVE_TEXT]" .. from.IsPuppet .. "% ratio[ENDCOLOR] from autonomy statut. (puppet city)"
+			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_UNREST_FROM_AUTONOMY", "COLOR_POSITIVE_TEXT", from.IsPuppet)	
 		end
 		
 		if from.IsOccupied > 100 then
-			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE][COLOR_NEGATIVE_TEXT]" .. from.IsOccupied .. "% ratio[ENDCOLOR] from being occupied."
+			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_UNREST_FROM_OCCUPATION", "COLOR_NEGATIVE_TEXT", from.IsOccupied)	
 		elseif (from.IsOccupied < 100) and (from.IsOccupied > 0) then
-			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE][COLOR_POSITIVE_TEXT]" .. from.IsOccupied .. "% ratio[ENDCOLOR] from being occupied."
+			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_UNREST_FROM_OCCUPATION", "COLOR_POSITIVE_TEXT", from.IsOccupied)	
 		end
 	
 		--unrestToolTipStr = unrestToolTipStr .. "[NEWLINE][NEWLINE]" .. REVOLT_VALUE .. " points are needed to resist, " .. REBELLION_VALUE .. " to generate rebels, " .. REVOLUTION_VALUE .. " to start revolution."
@@ -258,28 +258,28 @@ function UpdateDisplay()
 		end
 		local cityPopulation = city:GetPopulation()
 		if (from.Maximum > REVOLT_VALUE) then
-			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]"..revolt.."% risk of [COLOR_NEGATIVE_TEXT]entering resistance[ENDCOLOR], " .. REVOLT_VALUE .. " points are needed."
+			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_UNREST_RISK_REVOLT", revolt, REVOLT_VALUE)
 			if cityPopulation < MIN_REVOLT_CITY_SIZE then
-				unrestToolTipStr = unrestToolTipStr .. " [COLOR_POSITIVE_TEXT](but city is to small to revolt)[ENDCOLOR]"
+				unrestToolTipStr = unrestToolTipStr .. " [COLOR_POSITIVE_TEXT](" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_HINT_NO_SMALL_CITY_REVOLT") .. ")[ENDCOLOR]"
 			end
 		end
 		if (from.Maximum > REBELLION_VALUE) then
-			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]"..rebellion.."% risk of [COLOR_NEGATIVE_TEXT]generating rebels[ENDCOLOR], " .. REBELLION_VALUE .. " points are needed."
+			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_UNREST_RISK_REBEL", rebellion, REBELLION_VALUE)
 			if cityPopulation < MIN_REBELLION_CITY_SIZE then
-				unrestToolTipStr = unrestToolTipStr .. " [COLOR_POSITIVE_TEXT](but city is to small to rebel)[ENDCOLOR]"
+				unrestToolTipStr = unrestToolTipStr .. " [COLOR_POSITIVE_TEXT](" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_HINT_NO_SMALL_CITY_REBELLION") .. ")[ENDCOLOR]"
 			end
 		end
 		if (from.Maximum > REVOLUTION_VALUE) then
-			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]"..revolution.."% risk of [COLOR_NEGATIVE_TEXT]starting revolution[ENDCOLOR], " .. REVOLUTION_VALUE .. " points are needed."
+			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_UNREST_RISK_REVOLUTION", revolution, REVOLUTION_VALUE)
 			if cityPopulation < MIN_REBELLION_CITY_SIZE then
-				unrestToolTipStr = unrestToolTipStr .. " [COLOR_POSITIVE_TEXT](but city is to small for a revolution)[ENDCOLOR]"
+				unrestToolTipStr = unrestToolTipStr .. " [COLOR_POSITIVE_TEXT](" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_HINT_NO_SMALL_CITY_REVOLUTION") .. ")[ENDCOLOR]"
 			end
 		end
 
 		if from.Representation == 0 and from.Relation ~= 0 then
-			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]No unhappy Culture Group has enough representation (minimum " .. MIN_RATIO_REBELS_SPAWN .. "%) to produce unrest."
+			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_UNREST_REPRESENTATION", MIN_RATIO_REBELS_SPAWN)
 		elseif from.Relation == 0 then
-			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]All Culture Groups relation value are high enough (more than " .. MIN_RELATION_BEFORE_REBELLION .. ") to maintain stability."
+			unrestToolTipStr = unrestToolTipStr .. "[NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_UNREST_RELATION", MIN_RELATION_BEFORE_REBELLION)
 		end
 
 		sortEntry.Stability = from.Maximum
@@ -299,7 +299,7 @@ function UpdateDisplay()
 			instance.Revolt:SetText( "[COLOR_NEGATIVE_TEXT]" .. sortEntry.Revolt .. "%[ENDCOLOR]" )
 			local maxRevoltPoints = from.Maximum-REVOLT_VALUE
 			local MaxCityResistanceTurns = math.min(Round (maxRevoltPoints/CITY_REVOLT_POINTS), MAX_TURNS_REVOLT_CITY, cityPopulation)
-			instance.Revolt:SetToolTipString( "Maximum resistance turns = "..MaxCityResistanceTurns )
+			instance.Revolt:SetToolTipString( Locale.ConvertTextKey("TXT_KEY_REVOLUTION_RESISTANCE_TURNS_MAX", MaxCityResistanceTurns) )
 		else		
 			instance.Revolt:SetText( sortEntry.Revolt .. "%" )
 		end
@@ -311,7 +311,7 @@ function UpdateDisplay()
 			local rebelUnits = Round(maxRebellionPoints / UNIT_REBELLION_POINTS)
 			local spawnableRebels = Round(cityPopulation*unhappy/100)
 			local maxNumRebelUnits = math.min(rebelUnits, spawnableRebels)
-			instance.Rebellion:SetToolTipString( "Maximum rebel units to spawn = "..maxNumRebelUnits )
+			instance.Rebellion:SetToolTipString( Locale.ConvertTextKey("TXT_KEY_REVOLUTION_REBEL_UNITS_MAX", maxNumRebelUnits) )
 		else		
 			instance.Rebellion:SetText( sortEntry.Rebellion .. "%" )
 		end		
@@ -424,7 +424,7 @@ function UpdateDisplay()
 
     end	
 			
-	Controls.StabilityStatutStr:SetText("Actual statut : "..GetTroubleValueString(maxTrouble))
+	Controls.StabilityStatutStr:SetText(Locale.ConvertTextKey("TXT_KEY_REVOLUTION_INFO_ACTUAL_STATUS", GetTroubleValueString(maxTrouble)))
     
     Controls.MainStack:CalculateSize();
     Controls.MainStack:ReprocessAnchoring();
@@ -451,25 +451,25 @@ function UpdateRelationPanel()
 
 		local globalHappiness, globalVariation = GetGlobalHappiness(iPlayer, cultureRelations)
 		if globalVariation > 0 then
-			Controls.StabilityVariationStr:SetText( "Tendency : [COLOR_POSITIVE_TEXT]stability raising[ENDCOLOR]" ) 
+			Controls.StabilityVariationStr:SetText( Locale.ConvertTextKey("TXT_KEY_REVOLUTION_TENDENCY_STABILITY") ) 
 			if globalHappiness < 0 then
 				Controls.InnerRelationValue:SetText( "[COLOR_PLAYER_ORANGE_TEXT]" .. globalHappiness .. "[ENDCOLOR]" )
 			else
 				Controls.InnerRelationValue:SetText( "[COLOR_POSITIVE_TEXT]" .. globalHappiness .. "[ENDCOLOR]" )
 			end
-			Controls.InnerRelationValue:SetToolTipString( "Weighted relation variation is [COLOR_POSITIVE_TEXT]+"..globalVariation.."[ENDCOLOR]")
+			Controls.InnerRelationValue:SetToolTipString( Locale.ConvertTextKey("TXT_KEY_REVOLUTION_WEIGHTED_VARIATION", "COLOR_POSITIVE_TEXT", globalVariation))
 		elseif globalVariation < 0 then
-			Controls.StabilityVariationStr:SetText( "Tendency : [COLOR_NEGATIVE_TEXT]unrest raising[ENDCOLOR]" ) 
+			Controls.StabilityVariationStr:SetText( Locale.ConvertTextKey("TXT_KEY_REVOLUTION_TENDENCY_UNREST") ) 
 			if globalHappiness > 0 then
 				Controls.InnerRelationValue:SetText( "[COLOR_PLAYER_YELLOW_TEXT]" .. globalHappiness .. "[ENDCOLOR]" ) 
 			else
 				Controls.InnerRelationValue:SetText( "[COLOR_NEGATIVE_TEXT]" .. globalHappiness .. "[ENDCOLOR]" ) 
 			end
-			Controls.InnerRelationValue:SetToolTipString( "Weighted relation variation is [COLOR_NEGATIVE_TEXT]"..globalVariation.."[ENDCOLOR]")
+			Controls.InnerRelationValue:SetToolTipString( Locale.ConvertTextKey("TXT_KEY_REVOLUTION_WEIGHTED_VARIATION", "COLOR_NEGATIVE_TEXT", globalVariation))
 		else
-			Controls.StabilityVariationStr:SetText( "Tendency : no variation" ) 
+			Controls.StabilityVariationStr:SetText( Locale.ConvertTextKey("TXT_KEY_REVOLUTION_TENDENCY_NO") )
 			Controls.InnerRelationValue:SetText( globalHappiness ) 
-			Controls.InnerRelationValue:SetToolTipString( "Weighted relation variation is "..globalVariation )
+			Controls.InnerRelationValue:SetToolTipString( Locale.ConvertTextKey("TXT_KEY_REVOLUTION_WEIGHTED_VARIATION", "COLOR_WHITE", globalVariation))
 		end
 
 		local cultureGroups, totalCulture = GetCultureGroups(iPlayer)
@@ -498,11 +498,11 @@ function UpdateRelationPanel()
 			end
                 
             instance.InnerRelationGroupStr:SetText( innerRelationGroupStr )
-			instance.InnerRelationGroupStr:SetToolTipString( culturePercent.."% of Empire [ICON_CITIZEN][NEWLINE]Mood : " .. GetRelationValueString(relation))
+			instance.InnerRelationGroupStr:SetToolTipString( Locale.ConvertTextKey("TXT_KEY_REVOLUTION_CULTURE_GROUP_RELATION", culturePercent, GetRelationValueString(relation)) )
 						
 			local relationChange, from = GetRelationChange(iPlayer, data.Type)
 
-			local strtooltip ="Culture relation variation is "
+			local strtooltip
 			if relationChange > 0 then
 				if relation > 0 then
 					instance.InnerRelationChangeValue:SetText( "[COLOR_POSITIVE_TEXT]" .. relation .. "[ENDCOLOR]" )
@@ -511,7 +511,7 @@ function UpdateRelationPanel()
 				else
 					instance.InnerRelationChangeValue:SetText( "[COLOR_POSITIVE_TEXT]" .. relation .. "[ENDCOLOR]" )
 				end
-				strtooltip = strtooltip.. " [COLOR_POSITIVE_TEXT]+" .. relationChange .. "[ENDCOLOR] /turn."
+				strtooltip = Locale.ConvertTextKey("TXT_KEY_REVOLUTION_CULTURE_GROUP_RELATION_VARIATION", "COLOR_POSITIVE_TEXT", relationChange)
 			elseif relationChange < 0 then
 				if relation > 0 then
 					instance.InnerRelationChangeValue:SetText( "[COLOR_PLAYER_YELLOW_TEXT]" .. relation .. "[ENDCOLOR]" ) 
@@ -520,10 +520,10 @@ function UpdateRelationPanel()
 				else
 					instance.InnerRelationChangeValue:SetText( "[COLOR_NEGATIVE_TEXT]" .. relation .. "[ENDCOLOR]" ) 
 				end
-				strtooltip = strtooltip.. " [COLOR_NEGATIVE_TEXT]" .. relationChange .. "[ENDCOLOR] /turn."
+				strtooltip = Locale.ConvertTextKey("TXT_KEY_REVOLUTION_CULTURE_GROUP_RELATION_VARIATION", "COLOR_NEGATIVE_TEXT", relationChange)
 			else
 				instance.InnerRelationChangeValue:SetText( relation ) 
-				strtooltip = strtooltip.. " +" .. relationChange .." /turn."
+				strtooltip = Locale.ConvertTextKey("TXT_KEY_REVOLUTION_CULTURE_GROUP_RELATION_VARIATION", "COLOR_WHITE", relationChange)
 			end
 
 			table.sort(from, function(a,b) return a.Change > b.Change end)

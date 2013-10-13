@@ -29,4 +29,18 @@
 			<Text>The rate of Revolts (city resistance), Rebellions (rebels spawning) and Revolutions (city flipping) is greatly increased.</Text>
 		</Row>
 	</Language_en_US>
+	<Language_ru_RU>
+		<Row Tag="TXT_KEY_GAME_OPTION_REVOLUTION_SPAWN_NEW_CS">
+			<Text>Революция: независимые города</Text>
+		</Row>
+		<Row Tag="TXT_KEY_GAME_OPTION_REVOLUTION_SPAWN_NEW_CS_HELP">
+			<Text>После совершения революции город может обяъвить о своей независимости в качестве города-государства, если он не подпал под влияние другой цивилизации.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_GAME_OPTION_REVOLUTION_RAGING_REBELS">
+			<Text>Революция: неспокойный мир</Text>
+		</Row>
+		<Row Tag="TXT_KEY_GAME_OPTION_REVOLUTION_RAGING_REBELS_HELP">
+			<Text>Вероятность забастовок, вооруженных восстаний и революций значительно повышается.</Text>
+		</Row>
+	</Language_ru_RU>	
 </GameData>

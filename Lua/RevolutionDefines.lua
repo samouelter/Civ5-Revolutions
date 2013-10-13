@@ -205,7 +205,7 @@ g_EraRebels = {
 [ERA_FUTURE] =		GameInfo.Units.UNIT_INFANTRY.ID,
 }
 
--- 
+--
 g_EraRebelsBackground = {
 [ERA_ANCIENT] =		"ancient_revolution.dds",
 [ERA_CLASSICAL] =	"ancient_revolution.dds",

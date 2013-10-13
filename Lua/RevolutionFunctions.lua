@@ -534,7 +534,7 @@ function UpdateRebels(iPlayer)
 								local cityResistanceTurns = math.min(Round (revolt/CITY_REVOLT_POINTS), MAX_TURNS_REVOLT_CITY, citySize)
 								if cityResistanceTurns >= 1 then
 									Dprint ("         - city revolting for " .. cityResistanceTurns .. " turn(s)" , bDebug)
-									player:AddNotification(NotificationTypes.NOTIFICATION_CITY_LOST, GetCultureTypeAdj(cultureType) .. " citizens in "..city:GetName().." are protesting against your rule !", "Strikes in ".. city:GetName() .." !", cityPlot:GetX(), cityPlot:GetY())
+									player:AddNotification(NotificationTypes.NOTIFICATION_CITY_LOST, Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_PROTEST", GetCultureTypeAdj(cultureType), city:GetName()), Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_PROTEST_SHORT", city:GetName()), cityPlot:GetX(), cityPlot:GetY())
 									city:ChangeResistanceTurns(cityResistanceTurns)
 								end
 							end
@@ -548,7 +548,7 @@ function UpdateRebels(iPlayer)
 									local numRebels = math.min(numRebelsToSpawn, maxSpawnableRebels)
 									local unitType = SpawnRebels( city, iPlayer, cultureType, numRebels) -- spawn numRebels, get type of unit spawned
 									if unitType then -- SpawnRebels return false if it can't spawn any unit
-										player:AddNotification(NotificationTypes.NOTIFICATION_REBELS, GetCultureTypeAdj(cultureType) .. " citizens in "..city:GetName().." are revolting against your rule !", "Revolt in ".. city:GetName() .." !", cityPlot:GetX(), cityPlot:GetY(), unitType)
+										player:AddNotification(NotificationTypes.NOTIFICATION_REBELS, Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_REVOLT", GetCultureTypeAdj(cultureType), city:GetName()), Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_REVOLT_SHORT", city:GetName()), cityPlot:GetX(), cityPlot:GetY(), unitType)
 									end
 								end
 							end
@@ -558,9 +558,9 @@ function UpdateRebels(iPlayer)
 								Dprint ("         - generating revolution !!!" , bDebug)
 								local revolutionResult = RevolutionInCity( city, iPlayer, cultureType)
 								if revolutionResult then
-									player:AddNotification(NotificationTypes.NOTIFICATION_CITY_LOST, GetCultureTypeAdj(cultureType) .. " citizens in "..city:GetName().." are starting a revolution !", "Revolution in ".. city:GetName() .." !", cityPlot:GetX(), cityPlot:GetY())
+									player:AddNotification(NotificationTypes.NOTIFICATION_CITY_LOST, Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_REVOLUTION", GetCultureTypeAdj(cultureType), city:GetName()), Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_REVOLUTION_SHORT", city:GetName()), cityPlot:GetX(), cityPlot:GetY())
 								else
-									player:AddNotification(NotificationTypes.NOTIFICATION_CITY_LOST, GetCultureTypeAdj(cultureType) .. " citizens in "..city:GetName().." are trying to start a revolution !", "Revolution in ".. city:GetName() .." !", cityPlot:GetX(), cityPlot:GetY())
+									player:AddNotification(NotificationTypes.NOTIFICATION_CITY_LOST, Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_REVOLUTION_ATTEMPT", GetCultureTypeAdj(cultureType), city:GetName()), Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_REVOLUTION_ATTEMPT_SHORT", city:GetName()), cityPlot:GetX(), cityPlot:GetY())
 								end
 							end
 						end
@@ -946,7 +946,7 @@ function RevolutionInCity( city, iPlayer, cultureType)
 			if unit:IsCombatUnit() then
 				local damage = UNIT_DAMAGE_REVOLUTION + math.random( 0, UNIT_DAMAGE_REVOLUTION_VAR )
 				if damage > unit:GetCurrHitPoints() then
-					Players[unit:GetOwner()]:AddNotification(NotificationTypes.NOTIFICATION_UNIT_DIED, tostring(unit:GetName()) .. " has been killed while stopping ".. GetCultureTypeAdj(cultureType) .. " insurrection in "..city:GetName(), "Unit killed in ".. city:GetName() .." !", unit:GetX(), unit:GetY(), unit:GetUnitType(), unit:GetUnitType())
+					Players[unit:GetOwner()]:AddNotification(NotificationTypes.NOTIFICATION_UNIT_DIED, Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_GARRISON_LOST", tostring(unit:GetName()), GetCultureTypeAdj(cultureType), city:GetName()), Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_GARRISON_LOST_SHORT", city:GetName()), unit:GetX(), unit:GetY(), unit:GetUnitType(), unit:GetUnitType())				
 				end
 				unit:ChangeDamage(damage)
 				isGarisonned = true
@@ -1066,7 +1066,7 @@ function GetPlotRelationHelpString(plot, cultureMap, cultureRelations)
 		totalCulture = totalCulture + plotCulture[i].Value
 	end
 	if (totalCulture > 0) then -- don't mess with the universe
-		AddedString = AddedString .. "[ICON_CULTURE] Representation & Relations"
+		AddedString = AddedString .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_RELATIONS_TITLE")
 		for i = 1, #plotCulture do
 			local cultureID = plotCulture[i].ID
 			local civAdj = GetCultureTypeAdj(cultureID)
@@ -1415,9 +1415,9 @@ function RevolutionOutcome()
 						table.insert(toRemove, plotKey)
 
 						
-						player:AddNotification(NotificationTypes.NOTIFICATION_CAPITAL_RECOVERED, GetCultureTypeAdj(rebelType) .. " citizens in "..city:GetName().." have decided to join your empire !", "Revolution ended in ".. city:GetName() .." !", cityPlot:GetX(), cityPlot:GetY())
+						player:AddNotification(NotificationTypes.NOTIFICATION_CAPITAL_RECOVERED, Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_CITY_FLIPPED_TO_PLAYER", GetCultureTypeAdj(rebelType), city:GetName()), Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_CITY_FLIPPED_TO_PLAYER_SHORT", city:GetName()), cityPlot:GetX(), cityPlot:GetY())
 
-						Players[masterID]:AddNotification(NotificationTypes.NOTIFICATION_CITY_LOST, GetCultureTypeAdj(rebelType) .. " citizens in "..city:GetName().." have decided to join " .. tostring(player:GetName()) .." !", "Revolution ended in ".. city:GetName() .." !", cityPlot:GetX(), cityPlot:GetY())
+						Players[masterID]:AddNotification(NotificationTypes.NOTIFICATION_CITY_LOST, Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_CITY_FLIPPED_FROM_PLAYER", GetCultureTypeAdj(rebelType), city:GetName(), tostring(player:GetName())), Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_CITY_FLIPPED_FROM_PLAYER_SHORT", city:GetName()), cityPlot:GetX(), cityPlot:GetY())
 
 					elseif (REVOLUTION_SPAWN_NEW_CS) and (math.random( 0, 100 ) < NEW_CS_PERCENT_CHANCE ) then -- can spawn new CS ?
 						Dprint ("   - The revolutionnary comite is looking at the possibility of a declaration of independance...", bDebug)
@@ -1441,7 +1441,7 @@ function RevolutionOutcome()
 								table.insert(toRemove, plotKey)
 
 																
-								Players[masterID]:AddNotification(NotificationTypes.NOTIFICATION_CITY_LOST, GetCultureTypeAdj(rebelType) .. " citizens in "..tostring(city:GetName()).." have declared independance and found the state of " .. tostring(player:GetName()) .." !", "Revolution ended in ".. city:GetName() .." !", cityPlot:GetX(), cityPlot:GetY())
+								Players[masterID]:AddNotification(NotificationTypes.NOTIFICATION_CITY_LOST, Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_CITY_INDEPENDENCE", GetCultureTypeAdj(rebelType), city:GetName(), tostring(player:GetName())), Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_CITY_INDEPENDENCE_SHORT", city:GetName()), cityPlot:GetX(), cityPlot:GetY())
 								city:SetName(player:GetName())
 							else
 								Dprint ("   - But no available CS was found.", bDebug)
@@ -1478,10 +1478,10 @@ function RevolutionOutcome()
 							GiveCityToPlayer(city, player)
 
 							table.insert(toRemove, plotKey)
-						
-							player:AddNotification(NotificationTypes.NOTIFICATION_CAPITAL_RECOVERED, GetCultureTypeAdj(rebelType) .. " citizens in "..city:GetName().." have decided to join your empire !", "Revolution ended in ".. city:GetName() .." !", cityPlot:GetX(), cityPlot:GetY())
 
-							Players[masterID]:AddNotification(NotificationTypes.NOTIFICATION_CITY_LOST, GetCultureTypeAdj(rebelType) .. " citizens in "..city:GetName().." have decided to join " .. tostring(player:GetName()) .." !", "Revolution ended in ".. city:GetName() .." !", cityPlot:GetX(), cityPlot:GetY())
+							player:AddNotification(NotificationTypes.NOTIFICATION_CAPITAL_RECOVERED, Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_CITY_FLIPPED_TO_PLAYER", GetCultureTypeAdj(rebelType), city:GetName()), Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_CITY_FLIPPED_TO_PLAYER_SHORT", city:GetName()), cityPlot:GetX(), cityPlot:GetY())
+
+							Players[masterID]:AddNotification(NotificationTypes.NOTIFICATION_CITY_LOST, Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_CITY_FLIPPED_FROM_PLAYER", GetCultureTypeAdj(rebelType), city:GetName(), tostring(player:GetName())), Locale.ConvertTextKey("TXT_KEY_REVOLUTION_NOTIFICATION_CITY_FLIPPED_FROM_PLAYER_SHORT", city:GetName()), cityPlot:GetX(), cityPlot:GetY())							
 							
 						end
 
@@ -1521,12 +1521,12 @@ function GiveCityToPlayer(city, player)
 	local bDebug = true
 	Dprint ("--- Giving " .. tostring(city:GetName()) .. " to " .. tostring(player:GetName()), bDebug)
 	player:AcquireCity(city, false, true)
-	
+
 	Dprint ("--- Remove resistance", bDebug)
 	if city:GetResistanceTurns() > 0 then
 		city:ChangeResistanceTurns(-city:GetResistanceTurns())
 	end
-	
+
 	Dprint ("--- Remove Puppet and Razing for AI", bDebug)
 	if not player:IsHuman() then
 		city:SetPuppet(false)
@@ -1534,7 +1534,7 @@ function GiveCityToPlayer(city, player)
 			city:DoTask(TaskTypes.TASK_UNRAZE, -1, -1, -1)
 		end
 	end
-	
+
 	Dprint ("--- Remove Occupied flag", bDebug)
 	if city:IsOccupied() then
 		city:SetOccupied(false)
@@ -1603,11 +1603,11 @@ function SetRebelsText(rebelID, reservedCS)
 		local masterID = reservedCS[rebelID].Reference
 		local masterType = GetCivTypeFromPlayer(masterID)
 
-		adj = GetCultureTypeAdj(masterType).." separatists"
+		adj = Locale.ConvertTextKey("TXT_KEY_REVOLUTION_REBELS_TYPE_SEPARATIST", GetCultureTypeAdj(masterType))
 		tagStr = string.gsub (CityStateType, "MINOR_CIV_", "")
 
 	else
-		adj = GetCultureTypeAdj(cultureType).." rebels"
+		adj = Locale.ConvertTextKey("TXT_KEY_REVOLUTION_REBELS_TYPE_REBEL", GetCultureTypeAdj(cultureType))
 		tagStr = string.gsub (CityStateType, "MINOR_CIV_", "")
 	end
 			

@@ -159,7 +159,7 @@ function CultureRelationTipHandler( control )
 		strText = "[COLOR_NEGATIVE_TEXT]WARNING : No culture relation table ![ENDCOLOR]"
 	else
 		local realPopulation = player:GetRealPopulation()
-		strText = "Total [ICON_CITIZEN] population in the empire is " .. realPopulation ..".[NEWLINE]"
+		strText = Locale.ConvertTextKey("TXT_KEY_REVOLUTION_EMPIRE_POPULATION").." "..realPopulation ..".[NEWLINE]"
 		local cultureGroups, totalCulture = GetCultureGroups(iPlayer)
 
 		for i, data in pairs(cultureGroups) do
@@ -190,26 +190,26 @@ function CultureRelationTipHandler( control )
 	end
 	table.sort(troubleCities, function(a,b) return a.Revolt > b.Revolt end)
 
-	strText = strText .. "[NEWLINE][NEWLINE]Your empire is in " .. GetTroubleValueString(maxTrouble) .. " condition."
+	strText = strText .. "[NEWLINE][NEWLINE]" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_EMPIRE_STATE", GetTroubleValueString(maxTrouble))
 
 	if (#troubleCities > 0) then
-		strText = strText .. " Try to globally raise happiness, or send military units near the following cities to lower disorder:"
+		strText = strText .. " " .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_HINT_LOWER_DISORDER") .. ":"
 		for i, data in pairs(troubleCities) do
 			if i <= MAX_LINE_REVOLUTION_TOOLTIP then
-				strText = strText .. "[NEWLINE][NEWLINE] " .. data.City:GetName() .. ": [NEWLINE][ICON_BULLET]".. data.Revolt .."% strike probability"
+				strText = strText .. "[NEWLINE][NEWLINE] " .. data.City:GetName() .. ": [NEWLINE]".. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_STRIKE_PROBABILITY", data.Revolt)
 				if data.City:GetPopulation() < MIN_REVOLT_CITY_SIZE then
-					strText = strText .. " (but city is to small to generate revolt)"
+					strText = strText .. " (" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_HINT_NO_SMALL_CITY_REVOLT") .. ")"
 				end
 				if data.Rebellion > 0 then
-					strText = strText .. "[NEWLINE][ICON_BULLET]".. data.Rebellion .."% rebellion probability."
+					strText = strText .. "[NEWLINE]".. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_REBELLION_PROBABILITY", data.Rebellion)
 					if data.City:GetPopulation() < MIN_REBELLION_CITY_SIZE then
-						strText = strText .. " (but city is to small to generate rebellion)"
+						strText = strText .. " (" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_HINT_NO_SMALL_CITY_REBELLION") .. ")"
 					end
 				end
 				if data.Revolution > 0 then
-					strText = strText .. "[NEWLINE][ICON_BULLET]".. data.Revolution .."% revolution probability."					
+					strText = strText .. "[NEWLINE]".. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_REVOLUTION_PROBABILITY", data.Revolution)
 					if data.City:GetPopulation() < MIN_REVOLUTION_CITY_SIZE then
-						strText = strText .. " (but city is to small to generate revolution)"
+						strText = strText .. " (" .. Locale.ConvertTextKey("TXT_KEY_REVOLUTION_HINT_NO_SMALL_CITY_REVOLUTION") .. ")"
 					end
 				end
 			end
