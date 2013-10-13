@@ -26,9 +26,9 @@ Whys (SaveUtils), whoward69 (Route Finding)
 .
 
 	-- version history --
-	
+
 v.10 (Xxx, xx 2013)
-- 
+-
 
 v.9 (July, 09 2013)
 - Bugfix: A city with a courthouse was still considered "occupied"
